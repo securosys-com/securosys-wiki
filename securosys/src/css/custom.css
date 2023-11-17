@@ -96,6 +96,7 @@ html {
 }
 
 .footer {
+  --ifm-footer-background-color: black!important;
   padding-left: 0;
   padding-right: 0;
 }
@@ -214,7 +215,7 @@ html {
 }
 
 .navbar__logo {
-  height: calc(var(--ifm-navbar-height) - var(--ifm-global-border-width));
+  height: calc(var(--ifm-navbar-height) - var(--ifm-global-border-width) - 0.7rem);
 }
 
 /* Effectively center the logo in the navbar */

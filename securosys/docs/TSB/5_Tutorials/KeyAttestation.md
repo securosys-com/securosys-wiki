@@ -3,13 +3,13 @@
 ## 1. Generate Key Attestation
 
 
-POST: /v1/keyAttestation
+POST: /v1/key/keyAttestation
 
 **Description**: Generate key attestation files by key label
 
 Replace `<keyname>` and `password`. The password is optional and can be deleted completely.
 
-```
+```js
 {
   "label": "<keyname>",
   "password": [ "R","E","P","L","A","C","E" ]

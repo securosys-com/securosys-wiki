@@ -1,0 +1,8 @@
+{
+  "label": "Get Started",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "The Transaction Security Broker Software is the Restful interface for PrimusHSM and delivered as a set of Docker containers or available as a Service. It establishes connections to a Database for state management, an HSM (Hardware Security Module) cluster for key operations and policy enforcement, and utilizes various logging mechanisms to capture relevant information."
+  }
+}

@@ -14,7 +14,7 @@ Securosys Smart Key Attributes - enabling true multi-authorization, rules and mo
 **Description**: Create SKA-key request.
 
 ## SKA-Key with Policy
-```
+```js
 {
     "label": "<keyname>",
     "id": null,
@@ -145,7 +145,7 @@ SKA-Key with empty policy does not enforce true multiauthorization, but enables 
 
 :::
 
-```
+```js
     {
       "label": "<keyname>",
       "algorithm": "EC",

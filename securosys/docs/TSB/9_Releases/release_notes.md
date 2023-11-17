@@ -5,10 +5,10 @@ Issued: November, 6, 2023
 
 ### API Changes
 - New endpoints support to create Self Signed Certificates, CSR & Attestation:
-  - POST /v1/certificate/synchronous/create/selfSigned `Endpoint to create a self-signed certificate`
-  - POST /v1/certificate/synchronous/request/download `Endpoint to provide CSR-Filedownload with RSA Keys`
-  - POST /v1/certificate/request `Endpoint to support CSR with SKA-Keys`
-  - POST /v1/key/keyAttestation `Endpoint to generate key attestation files as filedownload, to support the qualified Signature Workflow.` 
+  - `POST /v1/certificate/synchronous/create/selfSigned` Endpoint to create a self-signed certificate
+  - `POST /v1/certificate/synchronous/request/download` Endpoint to provide CSR-Filedownload with RSA Keys
+  - `POST /v1/certificate/request` Endpoint to support CSR with SKA-Keys
+  - `POST /v1/key/keyAttestation` Endpoint to generate key attestation files as filedownload, to support the qualified Signature Workflow.
     - Namely:
       - `<keyname>.sig` --> The binary encoded signature
       - `<keyname>.xml` --> The xml format of the key's properties and capabilities

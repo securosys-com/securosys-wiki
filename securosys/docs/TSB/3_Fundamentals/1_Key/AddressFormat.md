@@ -15,14 +15,14 @@ Description: Returns the crypto currency address base (without checksum or netwo
 
 
 Request:
-``` 
+```js
     {
         "label": "Bitcoin"
     }
 ```
 
 Response:
-```
+```js
     {
         "address": "O+4DVWuyYakowbj6mvDSqDag3Zo="
     }

@@ -8,7 +8,7 @@ const darkTheme = themes.dracula;
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Securosys - Transaction Security Broker',
-  tagline: '',
+  tagline: 'The complete reference for Transaction Security Broker',
   favicon: 'img/favicon.ico',  
 
   // Set the production url of your site here
@@ -65,9 +65,9 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'Securosys',
+        title: '',
         logo: {
-          alt: 'Securosys',
+          alt: '',
           src: 'img/securosys_logo.svg',
         },        
         items: [
@@ -93,7 +93,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [          
+        links: [
           {
             title: 'Docs',
             items: [
@@ -139,6 +139,9 @@ const config = {
       prism: {
         theme: lightTheme,
         darkTheme: darkTheme,
+      },
+      colorMode: {
+        defaultMode: 'dark',
       },
     }),
 };

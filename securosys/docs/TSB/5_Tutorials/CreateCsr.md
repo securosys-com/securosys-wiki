@@ -33,7 +33,7 @@ POST: /v1/key
 
 Replace `<keyname>` and `password`. The password is optional and can be deleted completely.
 
-```
+```js
 {
     "label": "<keyname>",
     "password": [ "R","E","P","L","A","C","E" ],
@@ -58,7 +58,7 @@ POST: /v1/certificate/synchronous/request/download
 **Description**: Create a certificate request.
 
 Replace `<keyname>` and `password`. The password is optional and can be deleted completely.
-```
+```js
 {
     "signKeyName": "<keyname>",
     "keyPassword": [ "R","E","P","L","A","C","E" ],
