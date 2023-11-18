@@ -109,6 +109,6 @@ For additional software releases and resources, visit [Transaction Security Brok
 
 - Read the [QuickStart Guide - as a Service](./TSB/1_Get-Started/0_TSB-Quickstart.md)
 - Read the [QuickStart Guide - on Premise Installation](./TSB/1_Get-Started/1_TSB-Installation-OnPremises.md)
-- Request Samples (Rest-API) [Samples](./TSB/3_Fundamentals/2_Key-Operations/)
-- En-Decrypt, SignVerify [Tutorials](./TSB/5_Tutorials/)
+- Request Samples (Rest-API) [Samples](/docs/category/fundamentals)
+- En-Decrypt, SignVerify [Tutorials](/docs/category/tutorial)
 - Read the [official Deployment Guide](./TSB/2_Installation-Userguide/On-Premise-Installation.md)

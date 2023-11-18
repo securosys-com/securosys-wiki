@@ -84,7 +84,7 @@ export default function HomepageFeatures() {
               </div>
             </Link>
             <Link
-              to='/get-started/introduction/shimmer/introduction'
+              to='docs/intro'
               className='about__card'
             >
               <div className='about__section'>
