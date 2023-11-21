@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Installation Guide (On-Prem)
 
 **Document Information and Revision Control**
@@ -9,6 +12,8 @@
 | V3.0 | 21.04.2022 | PM | Version upgrade |
 | V4.0 | 05.07.2023 | PM | Added more detailed HSM setup, Added troubleshooting chapter, updated application-configuration files to latest version 1.15.1.1, added connection parameter endpoints, added sample application startup |
 | V5.0 | 01.09.2023 | PM | Add Infinite keystore configuration setup |
+
+---
 
 ## 1.1 Notification and Symbols
 
@@ -38,6 +43,8 @@ The following symbols are used for HSM configuration setup:
  `hsm_net_list_config serv=2 serv_port`
 <br />
 
+---
+
 # 2. Introduction
 
 This document provides instructions for installing the Securosys REST API, a standalone software that facilitates language-independent integration with Securosys Primus HSM. It also includes the installation steps for the Transaction Security Broker (TSB) license, which incorporates an approval workflow engine for Securosys Smart Key Attributes. The instructions cover both Linux and Windows platforms.
@@ -55,6 +62,8 @@ TSB software supports three security architecture types (_Type1, Type2, Type3_),
 ![](../img/TSB_Architecture.png)
 _Figure 1:REST API Various deployment Architectures_
 
+---
+
 ## 2.1 Security Architecture
 
 ### 2.1.1 TSB with OnPremise Primus HSM (_Type1_)
@@ -69,9 +78,13 @@ In this architecture type, a secure environment is established by providing dedi
 
 In this architecture, a dedicated HSM per customer (PLATINUM) is operated by Securosys in a Datacenter of the CloudsHSM service, offering flexibility in choice. The locally managed REST-API / TSB Software supports end-to-end encryption using mTLS. The CloudsHSMaaS solution provides High Availability, cloning mechanisms, and high-quality backups of the key material, ensuring the protection of valuable data. To pursue this architecture, please reach out to our Sales Team to begin the project.
 
+---
+
 ## 2.2 Support Contacts
 
 If you encounter a problem while installing, registering, or operating this product, please make sure that you have read the documentation. If you cannot resolve the issue, contact your supplier or Securosys Customer Support. The support portal is reachable under: [https://support.securosys.com/](https://support.securosys.com/) Your level of access to this service is governed by the support plan agreement made between Securosys and your organization. Please consult your support plan for further information about your entitlements, service level agreements and contact details.
+
+---
 
 ## 2.3 Abbreviations
 
@@ -85,19 +98,11 @@ If you encounter a problem while installing, registering, or operating this prod
 | **REST** | Representational State Transfer |
 <br />
 
+---
+
 # 3. HSM - Device setup and configuration
 
-:::tip SKA
 
-This chapter gives an overview of the main HSM setup and settings. Note that information in this chapter may not be complete nor up-to-date, depending on the HSM firmware in use. This chapter is written exclusively for complete onPremise architecture ( **Type 1** ). HSMaaS products are not affected. If the architecture types Type2, Type3 have been selected, you can skip to chapter [3. Transaction Security Broker Service Installation](#_Transaction_Security_Broker)
-
-:::
-
-:::danger Take care
-
-The initial setup of the Primus HSM is not covered in this guide, please refer to the [QuickStart Guide](https://support.securosys.com/external/knowledge-base/article/67) **and** the [Primus HSM User Guide](https://support.securosys.com/external/knowledge-base/article/63) (specifically chapters 3 and 4). If you haven't already done so, follow the initial wizard for device setup.
-
-:::
 
 After completing the initial setup (running the initial wizard), ensure that the HSM has a correct network configuration and can be accessed from the server where TSB will be installed. The HSM can be reached through the default port (port: 2300) unless it has been configured differently. Keep in mind that the service may be assigned to one of the four network interfaces available.
 
@@ -108,6 +113,8 @@ Use one of the following commands to ensure a valid network configuration:
 :~# ping 10.10.10.10
 ```
 
+---
+
 ## 3.1 Device configuration and partition setup
 
 The subsequent chapters address global device security settings, if you have specific user or partition settings, apply them accordingly using analogous configurations per partition (e.g., hsm\_sec\_enter\_user\_config, hsm\_user\_...).
@@ -117,78 +124,6 @@ The console commands should be adapted as follows:
 - To list parameters: use: `hsm_sec_list_config → hsm_user_list_config`
 - To change parameters: use: `hsm_sec_set_config → hsm_user_set_config`
 
-| **Step** | **![](../img/TSB/hsm_user_interface_icon.png) **HSM User Interface (LC Display)** Primus X/S-Series**| ![](../img/TSB/hsm_console_icon.png)**HSM Console Primus HSM, all Series** |
-| --- | --- | --- |
-| **1)** | | For Primus E-Series (and X-Series) you can setup the device via the console input ( ![](../img/TSB/hsm_console_icon.png) ).<br />Connect a PC (with terminal program) over the serial port with the following settings:<br /> 115200 8N1 (speed of 115200bps, 8 data bits, no parity bit, 1 stop bit). |
-
-Power-up the device and wait for completion of the boot procedure, the blue moving blue LEDs to settle into 4 steady LEDs. This indicates completion of the power-up sequence and self-tests. <br />
- **Verify the firmware** version of the device (example):
-
-| **Step** | **HSM User Interface (LC Display)** Primus X/S-Series** | **HSM Console Primus HSM, all Series** |
-| --- | --- | --- |
-| **2)** | ![](../img/TSB/hsm_user_interface_icon.png) <br /> The LC Display shows the version on the lower line right side of the screen: <br /> SECUROSYS Primus-HSM-X **V2.8.52** | ![](../img/TSB/hsm_console_icon.png) <br /> `Press "ENTER", enter the default login password "ABCD", followed by "ENTER".`<br /><br /> ![](../img/TSB/hsm_console_icon.png) <br /> `hsm_diagnostics fw (or "hsm_diagnostics frw" on v2.7.x firmware) Device firmware diagnostics: Operation mode: Normal Firmware version: **RX-2.8.52**` |
-| **3)** | **Activation of SO role** | ![](../img/TSB/so_card.png) |
-| |![](../img/TSB/hsm_user_interface_icon.png) <br /> SETUP → Role Activation | ![](../img/TSB/hsm_console_icon.png) hsm_so_activation |
-
-**Install and setup Root Key Store** Please ensure that you have copied the obtained license file to a USB stick. Insert the USB stick into the device before proceeding with the following step. ![](../img/TSB/genesis_card.png) <br />
-
-| **Step** | **HSM User Interface (LC Display)** Primus X/S-Series** | **HSM Console Primus HSM, all Series** |
-| --- | --- | --- |
-| **4)** |  ![](../img/TSB/hsm_user_interface_icon.png) <br /> SYSTEM -> ROOT KEY ELEMENT -> INSTALL ROOT KEY STORE <br /> SYSTEM -> ROOT KEY ELEMENT -> INSTALL ROOT KEY STORE | ![](../img/TSB/hsm_console_icon.png) `hsm_sec_install_rke` <br /> ![](../img/TSB/hsm_console_icon.png) `hsm_sec_setup_rks` |
-
-
-**Configure REST-API Access on device level**
-To utilize the basic TSB functionality, ensure that the REST-API is enabled. Enabling this feature grants access to execute the following endpoint.<br /><br />
-•	Service Information (Information about the service) <br />
-•	Synchronous Key Operations (Synchronous operations that are directly forwarded to the HSM. <br />
-•	Keys (Access to the HSM KeyStore) <br />
-
-:::danger Take care
-
-These settings are NOT optional and must be set in order to use TSB
-
-:::
-| **Step** | **HSM User Interface (LC Display)** Primus X/S-Series** | **HSM Console Primus HSM, all Series** |
-| --- | --- | --- |
-| **5)** | **Configure REST-API Access on device level**<br /> ![](../img/TSB/hsm_user_interface_icon.png) <br /> SETUP → CONFIGURATION → SECURITY → DEVICE SECURITY → CRYPTO POLICY → Client API Access<br />  SETUP → CONFIGURATION → SECURITY → DEVICE SECURITY → CRYPTO POLICY → KEY AUTH<br />  SETUP → CONFIGURATION → SECURITY → DEVICE SECURITY → CRYPTO POLICY → JCE<br />  SETUP → CONFIGURATION → SECURITY → DEVICE SECURITY → USER security → rest aPI ACCESS<br /> | ![](../img/TSB/hsm_console_icon.png) `hsm_sec_set_config crypto_access=true`<br /> ![](../img/TSB/hsm_console_icon.png) `hsm_sec_set_config jce=true`<br /> ![](../img/TSB/hsm_console_icon.png) `hsm_sec_set_config key_auth=true`<br /> ![](../img/TSB/hsm_console_icon.png) `hsm_sec_set_config rest_api=true` |
-
-Enable TSB Workflow Engine
-To utilize the enhanced multiauthorization signature workflow in TSB, ensure that the TSB Workflow engine is enabled, provided that the module is properly licensed. Enabling this feature grants access to execute the following endpoints: <br /> <br />
-•	[POST] /v1/sign, [POST] /v1/decrypt<br />
-•	[POST] /v1/unwrap, [POST] /v1/modify, [POST] /v1/block<br />
-•	[GET, DELETE] /v1/request/**<br />
-
-| **Step** | **HSM User Interface (LC Display)** Primus X/S-Series** | **HSM Console Primus HSM, all Series** |
-| --- | --- | --- |
-| **6)** | **Enable TSB Workflow Engine** <br />![](../img/TSB/hsm_user_interface_icon.png)<br /> SETUP → CONFIGURATION → SECURITY → DEVICE SECURITY → CRYPTO POLICY → Tsb Workflow engine | ![](../img/TSB/hsm_console_icon.png) `hsm_sec_set_config tsb_engine=true` |
-
-**Configure additional device security settings** Please note that for a comprehensive understanding of the following settings being configured, it is advised to consult the Primus HSM User Guide.
-
-| **Step** | **HSM User Interface (LC Display)** Primus X/S-Series** | **HSM Console Primus HSM, all Series** |
-| --- | --- | --- |
-| **7)** | ![](../img/TSB/hsm_user_interface_icon.png)<br /> •	SETUP → CONFIGURATION → SECURITY → DEVICE SECURITY → CRYPO POLICY → SESSION OBJECTS <br /> •	SETUP → CONFIGURATION → SECURITY → DEVICE SECURITY → CRYPO POLICY → Key Import<br /> •	SETUP → CONFIGURATION → SECURITY → DEVICE SECURITY → CRYPO POLICY → Key Export<br /> •	SETUP → CONFIGURATION → SECURITY → DEVICE SECURITY → CRYPO POLICY → Key Extract<br /> | ![](../img/TSB/hsm_console_icon.png) `hsm_sec_set_config session_objects=true`<br /> ![](../img/TSB/hsm_console_icon.png) `hsm_sec_set_config key_import=true`<br /> ![](../img/TSB/hsm_console_icon.png) `hsm_sec_set_config key_export=true`<br /> ![](../img/TSB/hsm_console_icon.png) `hsm_sec_set_config key_extract=true` |
-
-**Configure Key Invalidation (optional)**
-Activated Key Invalidation creates a **shadow copy** of the key when it is **deleted**. This may prevent creation of a new key with the same key name and key id.
-
-| **Step** | **HSM User Interface (LC Display)** Primus X/S-Series** | **HSM Console Primus HSM, all Series** |
-| --- | --- | --- |
-| **8)** |![](../img/TSB/hsm_user_interface_icon.png)<br /> •	SETUP → CONFIGURATION → SECURITY → DEVICE SECURITY → CRYPO POLICY → Key Invalidation | ![](../img/TSB/hsm_console_icon.png)  hsm_sec_set_config inval_keys=true |
-
-**Configure Object destruction**
-If set to false, key cannot be deleted (delete will always fail) 
-
-| **Step** | **HSM User Interface (LC Display)** Primus X/S-Series** | **HSM Console Primus HSM, all Series** |
-| --- | --- | --- |
-| **9)** |![](../img/TSB/hsm_user_interface_icon.png)<br />•	SETUP → CONFIGURATION → SECURITY → DEVICE SECURITY → CRYPO POLICY → Object destruction | ![](../img/TSB/hsm_console_icon.png) `hsm_sec_set_config destroy_objects=true`|
-
-**Create new User / Generate new setup password** of existing user (the setup password has limited lifetime, default 3 days) _Note down the user's_ _setup password_. _It_ _is required to setup the TSB connection to the HSM._ 
-
-| **Step** | **HSM User Interface (LC Display)** Primus X/S-Series** | **HSM Console Primus HSM, all Series** |
-| --- | --- | --- |
-| **10.1)** |![](../img/TSB/hsm_user_interface_icon.png)<br /> Roles → User → CREATE NEW USER | ![](../img/TSB/hsm_console_icon.png) `hsm_sec_create_user `<br />`SO >>> Enter new username:` <br /> ![](../img/TSB/hsm_console_icon.png)` TEST_USERGUIDE `<br />`SO >>> Temporary setup password is: _B7GSW-2WjB3-eZZjN-zHnGx-2Sdoc` <br />`SO >>> User created.` |
-| **10.2)** |![](../img/TSB/hsm_user_interface_icon.png)<br /> Roles → User → New Setup Password | ![](../img/TSB/hsm_console_icon.png) `hsm_sec_new_setup_pass` <br /> `SO >>> Enter username:` ![](../img/TSB/hsm_console_icon.png) `TEST_USERGUIDE` <br /> `SO>>> Temporary setup password is: _ze2kJ-5aGJG-wwh54-c4pkf-273aw` <br />`SO>>> Successfully finished.` |
-<br />
 
 # 4 Transaction Security Broker Service Requirements
 
@@ -197,6 +132,8 @@ If set to false, key cannot be deleted (delete will always fail)
 Running a Transaction Security Broker Service requires that you are already familiar with using [Docker Engine](https://docs.docker.com/config/daemon/) and [Docker Compose](https://docs.docker.com/compose/) .
 
 :::
+
+---
 
 ## 4.1 Supported Platforms
   - Linux
@@ -215,6 +152,8 @@ Requirements: Windows: WSL2 installed, Windows Subsystem for Linux & Virtual Mac
 On windows the setup is different by using the WSL2 Technology (Windows subsystem for Linux)
 Please follow the official installation guide: [Install Docker Desktop on Windows](https://docs.docker.com/desktop/install/windows-install/)
 <br />
+
+---
 
 # 5 Transaction Security Broker Configuration
 
@@ -246,6 +185,8 @@ The previously downloaded zip file contains th following files:
 | :~/config-files/log/ **logback.xml** | The logback.xml file is used to configure the logging behavior of the application, defining settings such as log levels, output formats, and log file destinations. |
 | :~/ **docker-compose-external-keystore.yml** | A Docker Compose file (docker-compose-external-keystore.yml) for storing and managing large volumes of cryptographic keys. |
 | :~/config-files/ **application-external-keystore.yml** | The application-external-keystore.yml file is a configuration file specific to the application for external keystore usage, (e.g. using the database for external storage option). |
+
+---
 
 ### 5.1.1 Linux – docker-compose.yml
 
@@ -323,6 +264,8 @@ The second service **securosys_tsb** block contains the fields:
 | ports | The port mapping for internal (Docker) and external (Host) network binding |
 | volumes | **./config**, the directory in which securosys-ska configuration files are stored (e.g. application config, TLS config, TEE config, Logging Config, …) <br />**./output**, the directory where the log output is written to (if logging is configured to file) |
 | environment | Environment variables that are injected during startup spring.profile.active=local e.g. tells the springboot application to map another application configuration file (profiles are used for this). <br /> In this example application-local.yml is used as additional application configuration file. <br /><br /> Note: Change 'spring.profiles.active' to application-external-keystore.yml to switch to external key usage. |
+
+---
 
 ### 5.1.2 Linux – config-files/application-local.yml
 
@@ -422,9 +365,13 @@ Further information on setting up TLS and mTLS files can be found at the end of 
 | tls.trustStorePassword | The password that was set when the trust-store was created |
 | clientAuthentication | mutualTLS configuration, an enum consists of: <br />•	`need`: Client Authentication is needed and mandatory<br /> •	`want`: Client authentication is wanted but not mandatory <br />•	`none`: Client authentication is not wanted e.g. none|
 
+---
+
 ### 5.1.3 Linux – config-files/application-local-access-token.yml
 
 The application-local-access-token.yml file is utilized to configure JWT authentication access and necessitates the creation of JWT tokens for secure system access. Notably, this configuration supports a one-to-many deployment model, allowing a single TSB instance to connect with multiple HSM partitions. Please contact your sales representative or open a ticket at the Securosys support portal to setup TSB as multi-auth service.
+
+---
 
 ### 5.1.4 Linux – config-files/application-external-keystore.yml
 
@@ -432,6 +379,8 @@ Different use cases in blockchain, IoT or signing (TSP) industries require very 
 
 With IKS, keys are stored as external key objects in the TSB inherent database, encrypted by the Partition Key stored inside the HSM. Thus, the storage size can theoretically grow limitless and provide storage for an infinite number of keys. Please contact your sales representative or open a ticket at the Securosys support portal.
 <br />
+
+---
 
 # 6 Starting Transaction Security Broker
 
@@ -441,6 +390,8 @@ In this chapter, you will initiate the Transaction Security Broker to verify its
 - Perform testing using Swagger-UI and CURL.
 
 These steps ensure that the Transaction Security Broker application is properly set up and configured.
+
+---
 
 ## 6.1 Starting multi-container application
 
@@ -459,6 +410,8 @@ To launch the multi-container application, execute the following command in the 
     :~/securosys_tsb$ docker-compose up
 ```
 
+---
+
 ## 6.2 Testing
 
 - Browser testing: http://**`<your_machine_ip>`**:8080/swagger-ui/index.html
@@ -466,6 +419,8 @@ To launch the multi-container application, execute the following command in the 
 - CURL with mTLS test: `curl -v --cert-type P12 –cert client-cert.p12:<password> https://<your_machine_ip>:8080/v1/licenseInfo`
 
 Replace **`<your_machine_ip>`**with either localhost, 127.0.0.1, or DNS-Name if configured.
+
+---
 
 ## 6.3 Sample Application startup
 ```java
@@ -511,6 +466,8 @@ Replace **`<your_machine_ip>`**with either localhost, 127.0.0.1, or DNS-Name if 
 2023.07.0515:05:15.193INFO  [ restartedMain] [ka.service.business.HsmService] grimsel.securosys.ch:2300:TSBDEV connected
 ```
 
+---
+
 ## 6.4 Default Connection Parameters of the REST-API / TSB _(Type1, Type2, Type3)_
 
 The table below shows the default configuration values done in **application-local.yml** the parameter `hsm.host`, `hsm.port`, if not specified differently by your Security Officer (SO)
@@ -525,6 +482,8 @@ The table below shows the default configuration values done in **application-loc
 | **Clouds HSM SG (Singapore)** | sg01-api.cloudshsm.com | 2300 | yes |
 | **Clouds HSM WR (World Cluster)** | de01-api.cloudshsm.com, us01-api.cloudshsm.com, sg01-api.cloudshsm.com | 2300 | yes | 
   
+---
+
 ## 6.5 Default Connection Parameters TSBaaS operated by Securosys
 
 | **TSB Service** | **Description** | **Documentation** | **API-BaseURL** |
@@ -535,6 +494,8 @@ The table below shows the default configuration values done in **application-loc
 | **Production (ECO)** | TSB bound to CloudsHSM ECO partition, production, JWT auth | [Swagger-UI](https://rest-api.cloudshsm.com/swagger-ui/index.html) | [https://rest-api.cloudshsm.com/v1/](https://rest-api.cloudshsm.com/) |
 
 <br />
+
+---
 
 # 7 Example of Setting up Proxy Service for HSMaaS
 
@@ -565,6 +526,8 @@ hsm:
 | proxyUser | HSMaaS (Type 2, Type3) only: the name of the service user (proxy), as provided by Securosys |
 | proxyPassword | HSMaaS (Type 2, Type3) only: the password of the service user (proxy), as provided by Securosys |
 <br />
+
+---
 
 # 8 Linux - config-files/log/logback.xml
 
@@ -629,6 +592,8 @@ This current log configuration shows how to write logging information to the con
 | Log level - ERROR | log level telling that an error, expected or unexpected, usually meaning that part of the system in not working properly |
 <br />
 
+---
+
 # 9 Setting up Trusted Execution Environment Configuration (Optional)
 
 Securosys Imunes is a confidential computing platform that offers a trusted execution environment (TEE) for secure code execution on tamper-protected hardware. It can be deployed as a single unit or a cluster of multiple TEEs, enabling various use cases focused on scalability, automation, trust, and confidentiality. The TEE ensures the execution of securely loaded and untampered executables, making it ideal for transactional programs and automating trusted decisions at scale. This chapter specifically covers the setup of the Transaction Security Broker within the Trusted Execution Environment. For complete setup instructions, please download the documentation from the Support Portal. If you have any questions or are interested in TEE, please reach out to our support team.
@@ -676,6 +641,8 @@ tee:
 | approvalProcessingInterval | The interval in which the TEE client should check for approvals, in milisecondsmilliseconds |
 <br />
 
+---
+
 # 10 Docker installation - Linux
 
 - Install Docker Engine on Linux
@@ -709,6 +676,8 @@ tee:
 :~/$ sudo docker run hello-world
 ```
 <br />
+
+---
 
 # 11 Testing and Troubleshooting
 | **Error ** | **Possible solutions ** |
