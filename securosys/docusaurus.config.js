@@ -57,7 +57,7 @@ const config = {
         },
       }),
     ],
-  ],
+  ],  
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -142,6 +142,10 @@ const config = {
       },
       colorMode: {
         defaultMode: 'dark',
+      },
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 5,
       },
     }),
 };

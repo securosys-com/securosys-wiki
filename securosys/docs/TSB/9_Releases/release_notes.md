@@ -359,7 +359,7 @@ Issued: November, 11th, 2021
 Issued: October, 4th, 2021
 ### API Changes
 - An endpoint is added to create a RFC3161 timestamp. (POST /v1/createRfcTimestamp)
-- An EC Key with a custom curve can now be created. The custom curve must be in the regex-format 'p[0-9]+.a[0-9]+.b[0-9]+.x[0-9]+.y[0-9]+.g[0-9]+.h[0-9]+'. (POST /v1/key)
+- An EC Key with a custom curve can now be created. The custom curve must be in the regex-format `[0-9]+.a[0-9]+.b[0-9]+.x[0-9]+.y[0-9]+.g[0-9]+.h[0-9]+`. (POST /v1/key)
 
 ### Bugfixes
 - The warning 'Found explicit default persistence unit with name 'SECUROSYS-UNIT' in persistence.xml - overriding local default persistence unit settings ('packagesToScan'/'mappingResources')' is now fixed.
@@ -401,7 +401,7 @@ Issued: September, 10th, 2021
 Issued: August, 20th, 2021
 ### API Changes
 - The flags modifiable, destroyable and private can now be optionally set for a data object (POST /v1/dataObject) and are now returned when fetching a data object `GET /v1/dataObject/{dataObjectName}`
-- An endpoint is added to fetch random bytes with a specific length from the HSM (GET /v1/generateRandom/{length})
+- An endpoint is added to fetch random bytes with a specific length from the HSM (`GET /v1/generateRandom/{length}`)
 - Support for wrapping and unwrapping a BLS key is added (POST /v1/wrap and POST /v1/unwrap)
 - An endpoint for a synchronous unwrap is added (POST /v1/synchronousUnwrap)
 - The new optional attribute allowedTimestampSigningCertificateFingerprints is added to partition access tokens. Configured certificates are allowed to fetch and delete all tasks for an approver on the onboarded partition.

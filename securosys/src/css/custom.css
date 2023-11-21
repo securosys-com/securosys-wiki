@@ -6,6 +6,18 @@ html {
   scroll-behavior: smooth;
 }
 
+[data-theme='dark'] .tabs-container {
+  background-color: var(--ifm-color-gray-900);
+}
+
+[data-theme='light'] .tabs-container {
+  background-color: var(--ifm-color-gray-100);
+}
+
+.margin-top--md {
+  padding: 25px;
+}
+
 .version-picker {
   background-color: var(--ifm-color-emphasis-200);
   margin-bottom: 2rem;
