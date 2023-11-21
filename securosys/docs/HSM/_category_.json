@@ -1,0 +1,8 @@
+{
+  "label": "PrimusHSM",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "A Hardware Security Module generates, stores, and manages digital identities (certificates), encryption keys, and digital assets. Rather than storing this critical information just somewhere on your network server or on a cloud server an HSM securely locks them away. So, even if your network is breached and your files are accessed, the most critical information, your digital identities and assets, your certificates, and your encryption keys are protected."
+  }
+}

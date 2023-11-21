@@ -10,81 +10,17 @@
 | V4.0 | 05.07.2023 | PM | Added more detailed HSM setup, Added troubleshooting chapter, updated application-configuration files to latest version 1.15.1.1, added connection parameter endpoints, added sample application startup |
 | V5.0 | 01.09.2023 | PM | Add Infinite keystore configuration setup |
 
-
-# 1. Table of Contents
-
-[1.1 Notification and Symbols](#11-notification-and-symbols)
-
-**[2 Introduction](#2-introduction)**
-
-[2.1 Security Architecture](#21-security-architecture)
-
-[2.1.1 TSB with OnPremise Primus HSM (_Type1_)](#211-tsb-with-onpremise-primus-hsm-type1)
-
-[2.1.2 TSB Software with HSMaaS in a Shared Environment (_Type2_)](#212-tsb-software-with-hsmaas-in-a-shared-environment-type2)
-
-[2.1.3 TSB Software with HSMaaS in a dedicated Environment (_Type3_)](#213-tsb-software-with-hsmaas-in-a-dedicated-environment-type3)
-
-[2.2 Support Contacts](#22-support-contacts)
-
-[2.3 Abbreviations](#23-abbreviations)
-
-**[3 Primus HSM Settings for REST-API / TSB](#_Toc139462744)**
-
-[3.1 Device configuration and partition setup](#31-device-configuration-and-partition-setup)
-
-**[4 Transaction Security Broker Service Installation](#_Toc139462747)**
-
-[4.1 Supported Platforms](#41-supported-platforms)
-
-[4.2 Linux - Docker installation](#42-linux---docker-installation)
-
-[4.3 Windows – Docker installation](#43-windows--docker-installation)
-
-**[5 Transaction Security Broker Configuration](#_Toc139462752)**
-
-[5.1 Download Configuration Files](#51-download-configuration-files)
-
-[5.1.1 Linux – docker-compose.yml](#511-linux--docker-composeyml)
-
-[5.1.2 Linux – config-files/application-local.yml](#512-linux--config-filesapplication-localyml)
-
-[5.1.3 Linux – config-files/application-local-access-token.yml](#513-linux--config-filesapplication-local-access-tokenyml)
-
-**[6 Starting Docker Containers](#_Toc139462757)**
-
-[6.1 Starting multi-container application](#61-starting-multi-container-application)
-
-[6.2 Testing](#62-testing)
-
-[6.3 Sample Application startup](#63-sample-application-startup)
-
-[6.4 Default Connection Parameters of the REST-API / TSB _(Type1, Type2, Type3)](#64-default-connection-parameters-of-the-rest-api--tsb-type1-type2-type3)
-
-[6.5 Default Connection Parameters TSBaaS operated by Securosys](#65-default-connection-parameters-tsbaas-operated-by-securosys)
-
-**[7 Example of Setting up Proxy Service for HSMaaS](#_Toc139462763)**
-
-**[8 Linux - config-files/log/logback.xml](#_Toc139462764)**
-
-**[9 Setting up Trusted Execution Environment Configuration (Optional)](#_Toc139462765)**
-
-**[11 Docker installation - Linux](#_Toc139462767)**
-
-**[12 Testing and Troubleshooting](#_Toc139462768)**
-
-
 ## 1.1 Notification and Symbols
 
 :::tip SKA
 
-contains helpful or important information for setting up TSB onPremise
+This symbol contains helpful or important information for setting up TSB onPremise
 
 :::
 
 :::danger Take care
 
-be careful and obey all instructions. You might do something that could result in data loss
+This symbol means to be careful and obey all instructions. You might do something that could result in data loss
 
 :::
 

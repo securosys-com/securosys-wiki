@@ -1,21 +1,13 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Initial Setup (v2.11.1)
+# Initial Setup (≥ v2.11.1)
 
-This chapter reflects the Quick Start Guide delivered with the device.
+This page reflects the Quick Start Guide delivered with the device and guides how to initially setup the HSM.
 
-:::tip Tip
+---
 
-For Primus E-Series (and X-Series) you can setup the device via the console input ( ).
-
-Connect a PC (with terminal program) over the serial port with the following settings: 
-
-**115200 8N1 (speed of 115200bps, 8 data bits, no parity bit, 1 stop bit).**
-
-:::
-
-### 1.1.1 - Unpack the HSM
+## Unpack the HSM
 
 "Genesis" card and PIN may be sent by separate post mail for some Swiss customers.
 Depending on the device type (X-Series or E-Series) the package content may differ:
@@ -27,8 +19,8 @@ Depending on the device type (X-Series or E-Series) the package content may diff
     - this Quick Start Guide 
     - 2 power cables 
     - 1 USB memory stick 
-    - 2 Genesis Cards (GN) ![](../img/HSM/genesis_card.png) 
-    - 3 Security Officer (SO) Cards ![](../img/HSM/so_card.png)
+    - 2 Genesis Cards (GN) ![](../../../img/HSM/genesis_card.png) 
+    - 3 Security Officer (SO) Cards ![](../../../img/HSM/so_card.png)
   </TabItem>
   <TabItem value="e-series" label="Primus E-Series device">
     Accessory box contains: 
@@ -37,10 +29,9 @@ Depending on the device type (X-Series or E-Series) the package content may diff
     - 1 USB memory stick
   </TabItem>
 </Tabs>
+---
 
-
-### 1.1.2 - Obtain Activation Code, License, Firmware, and Documentation from the Support Portal
-
+## Obtain Activation Code, License, Firmware, Documentation
 :::danger Take care
 
 To continue, access to the Securosys Support Portal https://support.securosys.com is required. If
@@ -61,7 +52,7 @@ The following preparations are necessary before setting up the Primus HSM:
 - For further documentation and application notes consult the Knowledge Base.
 
 ---
-## 1.2 - Evaluate the Installed HSM Firmware Version
+## Evaluate the Installed HSM Firmware Version
 
 Depending on the installed firmware the update procedure might differ. A new device delivered from factory stock might not have the latest firmware installed (e.g. v2.7.x, v2.8.x).
 
@@ -97,14 +88,15 @@ light blue steady LEDs. This indicates completion of the power-up sequence and s
   </TabItem>
 </Tabs>
 
-__Note: In case of firmware < v2.11, continue with [Update to 2.11](./HSM-Update-to-v2-11-1.md), In case of firmware ≥ v2.11, continue with [chapter 1.3](#13---initial-setup-of-the-hsm-firmware-v211)__
+__Note: In case of firmware < v2.11, continue with [Firmware update to (v2.11)](../Update/HSM-Update-to-v2-11-1.md), <br />In case of firmware ≥ v2.11, continue with chapter [1.3 - Initial Setup of the HSM (firmware ≥v2.11)](#13---initial-setup-of-the-hsm-firmware-v211)__
 
 ---
-## 1.3 - Initial Setup of the HSM (firmware ≥v2.11)
+## Initial Setup of the HSM (firmware ≥v2.11)
 
-:::danger Tip
+:::danger V2.11 required
 
-Note that the procedure below applies only to firmware v2.11 and newer
+Note that the procedure below applies only to firmware v2.11 and newer, <br />
+check [Firmware update to (v2.11)](../Update/HSM-Update-to-v2-11-1.md) to update to firmware version v2.11
 
 :::
 <br />
@@ -127,13 +119,13 @@ With firmware v2.11 onwards the Initial Wizard allows to install or update vario
 |14|pair Decanus Remote Terminal(s) and report pairing password and files for Decanus|
 |15|generate the necessary signed attestation files for audit procedures|
 
-### 1.3.1 Preparations for the Initial Wizard (Firmware `≥v2.11`)
+### Preparations for the Initial Wizard (Firmware `≥v2.11`)
 Prepare all necessary material, information, and files for execution of the initial wizard:
 - **Genesis Card**(s) for devices with card slots (e.g. Primus X),
 the Genesis PIN, either created previously or received on other ways or the Activation Code, retrieved from the support portal to generate the initial GPIN
 - **SO Cards** in case of 2-factor authentication (Primus X, min. 2 cards)
 - Decide about operation mode (normal, restricted, FIPS, CC; see chapter 3.10)
-- **USB memory stick** to use the new features (green marked), with some of the following files prepared on the stick (optionally)
+- **USB memory stick** to use the new features, with some of the following files prepared on the stick (optionally)
   - Updated license file (*.license) downloadable from the Securosys Support Portal ([see asset under section Equipment & Contracts](https://support.securosys.com/external/itsmconfigitem/overview))
   - Latest (or required) [firmware file (*.hsm; v2.11.1 or newer)](https://support.securosys.com/external/knowledge-base/article/111)
   - c) Device configuration file (*.sconfig, without user configuration) see chapter 14.11 (14.12.2) as example, without the user sections like 
@@ -144,7 +136,7 @@ the Genesis PIN, either created previously or received on other ways or the Acti
   - Decanus UID file (*.dconfig) for Decanus pairing Consult chapter 14.13 for XML reference.
   - HSM Backup file (*.backup) in case you want to restore from backup see chapter 9 Backup and Restore for details.
 
-### 1.3.2 Run the Initial Wizard (Firmware v2.11+)
+### Run the Initial Wizard (Firmware v2.11+)
 
 :::tip Tip
 
@@ -154,7 +146,7 @@ For Primus E-Series (and X-Series) you can setup the device via the console inpu
 
 :::tip For Primus X devices
 
-For the next **Step 1** you will need the Genesis Card(s) ![](../img/HSM/genesis_card.png) for devices with card slots (e.g. Primus X),
+For the next **Step 1** you will need the Genesis Card(s) ![](../../../img/HSM/genesis_card.png) for devices with card slots (e.g. Primus X),
 and the [Activation Code](https://support.securosys.com/external/ticket/create/process?ProcessID=Process-5a0414d13b1fe09bfc6643ed159c0f14), retrieved from the support portal to generate the initial GPIN. 
 
 Devices without card slots (Primus E) have the Genesis card built-in, and therefore no card insertion is requested.
@@ -167,7 +159,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
 <Tabs groupId="device-setup">
   <TabItem value="ui" label="HSM User Interface (LC Display) Primus X/S-Series" default> 
     - **1) Preparations**<br />
-      Required preparations, see [chapter above](#131-preparations-for-the-initial-wizard-firmware-v211)
+      Required preparations, see [chapter above](#preparations-for-the-initial-wizard-firmware-v211)
 ---
     - **2) Plug-in the USB**<br />
       Plug-in the prepared (or empty) USB stick into the USB Port (X-Series: front panel; E-Series: rear panel)
@@ -185,7 +177,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
       - Confirm with YES
       ```      
 ---
-    - **5) Setup of Genesis PIN** ![](../img/HSM/genesis_card.png) <br />
+    - **5) Setup of Genesis PIN** ![](../../../img/HSM/genesis_card.png) <br />
           For the next step you will need the Genesis Card(s) <br /> for devices with card slots (e.g. Primus X),the Genesis PIN, either created previously or received on other ways (see accompanying documentation) or the Activation Code, retrieved from the [support portal](https://support.securosys.com/external/ticket/create/process?ProcessID=Process-5a0414d13b1fe09bfc6643ed159c0f14) to generate the initial GPIN. Devices without card
       slots (Primus E) have the Genesis card built-in, and therefore no card insertion is requested.
       ```
@@ -223,7 +215,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
         INSERT USB STORAGE DEVICE 
       ```
 ---
-    - **7) License update** ![](../img/HSM/genesis_card.png)<br />
+    - **7) License update** ![](../../../img/HSM/genesis_card.png)<br />
       In case a license file **(*.license)** is found on the USB stick, the license is checked and updated if necessary. <br />
       In some upgrade scenarios the license might be updated again after the firmware update. <br />
       A license change will cause a device reboot. Restart at step 15) after the device reboot.
@@ -231,14 +223,14 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
         CHECKING LICENSE UPDATE PATIENCE…
       ```
 ---
-    - **8) Firmware update** ![](../img/HSM/genesis_card.png)<br />
+    - **8) Firmware update** ![](../../../img/HSM/genesis_card.png)<br />
       In case a firmware file **(*.hsm)** is found on the USB stick, the file is checked and updated if necessary.<br />
       A firmware change will cause a device reboot. Restart at step 15) after the device reboot.
       ```
         CHECKING FIRMWARE UPDATE PATIENCE…
       ```
 ---
-    - **9) Operation Mode** ![](../img/HSM/genesis_card.png)<br />
+    - **9) Operation Mode** ![](../../../img/HSM/genesis_card.png)<br />
       In the next step you define the operation mode, which cannot be changed later.
       ```
         USE NORMAL MODE (No - For FIPS mode) 
@@ -264,7 +256,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
       - Confirm with OK
       ```
 ---
-    - **10) Device Security Configuration** ![](../img/HSM/genesis_card.png)<br />
+    - **10) Device Security Configuration** ![](../../../img/HSM/genesis_card.png)<br />
       In case a device security configuration file **(*.sconfig)** is found on the USB stick, the content is validated and applied. <br />
       Note: the file is invalid if it contains user information!
       ```
@@ -273,7 +265,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
       - Confirm with OK
       ```
 ---
-    - **11) Root Key Store** ![](../img/HSM/genesis_card.png)<br />
+    - **11) Root Key Store** ![](../../../img/HSM/genesis_card.png)<br />
       In case the Root Key Store is licensed, it is setup automatically (used for audit information).<br />
       __Note: This setting is required to operate TSB__
       ```
@@ -282,7 +274,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
       - Confirm with OK
       ```    
 ---
-    - **12) Security Officer (SO)** ![](../img/HSM/genesis_card.png) ![](../img/HSM/so_card.png)<br />
+    - **12) Security Officer (SO)** ![](../../../img/HSM/genesis_card.png) ![](../../../img/HSM/so_card.png)<br />
       For the next step you will need the SO Cards in case of 2-factor authentication (Primus X, min. 2 cards). <br />
       Create two or more Security Officers (SO) for the device, by defining unique SO operator names and the associated SO PIN, which must have 8 to 12 digits and shall not lead with 0:
       ```
@@ -329,7 +321,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
             XXXXXXXXXX
           - Confirm with OK          
           ```
-        -  Continue with step 26)<br />
+        -  Continue with step 14)<br />
       ---
         In case **no Partition Configuration File** was found, you are asked to create a new user (partition) and to define the username. In this case you should note the displayed Temporary Setup Password (not written to USB stick), required to initially connect with the Client Providers (JCE, MS CNG, PKCS#11) safely to the HSM. The setup password is only valid for 3 days (configurable), starting after first usage.
             ```
@@ -338,7 +330,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
 
               TEMPORARY SETUP PASSWORD `AAAAA-BBBBB-CCCCC-DDDDD-EEEEE`          
             ```
-          -  Continue with step 26)
+          -  Continue with step 14)
       --- 
       - **13b)** No – “Setup as Clone” selected:<br />
 
@@ -396,7 +388,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
         - Confirm with YES
         ```
 ---
-    - **6) Setup of Genesis PIN** ![](../img/HSM/genesis_card.png)<br />    
+    - **6) Setup of Genesis PIN** ![](../../../img/HSM/genesis_card.png)<br />    
       For the next step you will need the Genesis Card(s) <br /> for devices with card slots (e.g. Primus X),
       the Genesis PIN, either created previously or received on other ways (see accompanying documentation)
       or the Activation Code, retrieved from the [support portal](https://support.securosys.com/external/ticket/create/process?ProcessID=Process-5a0414d13b1fe09bfc6643ed159c0f14) to generate the initial GPIN. Devices without card
@@ -414,7 +406,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
           PIN accepted!
         ```
         
-        - Continue with step 18)
+        - Continue with step 7)
 
       - **6b)** In case you do not have a Genesis PIN: 
         ```
@@ -437,7 +429,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
         Insert USB memory stick and then press `<ENTER>`.
       ```
 ---
-    - **8)** **License update** ![](../img/HSM/genesis_card.png)<br />
+    - **8)** **License update** ![](../../../img/HSM/genesis_card.png)<br />
       In case a license file **(*.license)** is found on the USB stick, the license is checked and updated if necessary. <br />
       In some upgrade scenarios the license might be updated again after the firmware update. <br />
       A license change will cause a device reboot. Restart at step 1) after the device reboot.
@@ -448,7 +440,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
         Rebooting!
       ```
 ---
-    - **9) Firmware update** ![](../img/HSM/genesis_card.png)<br />      
+    - **9) Firmware update** ![](../../../img/HSM/genesis_card.png)<br />      
       In case a firmware file **(*.hsm)** is found on the USB stick, the file is checked and updated if necessary.<br />
       A firmware change will cause a device reboot. Restart at step 15) after the device reboot.
       ```
@@ -458,7 +450,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
         Rebooting!
       ```
 ---
-    - **10) Operation Mode** ![](../img/HSM/genesis_card.png)<br />
+    - **10) Operation Mode** ![](../../../img/HSM/genesis_card.png)<br />
       In the next step you define the operation mode, which cannot be changed later.
       - Select **YES** for
         - Standard HSM setup (see 3.10)
@@ -479,7 +471,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
           KEK created!
         ```
 ---
-    - **11) Device Security Configuration** ![](../img/HSM/genesis_card.png)<br />
+    - **11) Device Security Configuration** ![](../../../img/HSM/genesis_card.png)<br />
       In case a device security configuration file **(*.sconfig)** is found on the USB stick, the content is validated and applied. <br />
       Note: the file is invalid if it contains user information!
       ```
@@ -487,14 +479,14 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
         Importing the configuration from the USB is successful!
       ```
 ---
-    - **12) Root Key Store** ![](../img/HSM/genesis_card.png)<br />
+    - **12) Root Key Store** ![](../../../img/HSM/genesis_card.png)<br />
       In case the Root Key Store is licensed, it is setup automatically (used for audit information). 
       ```
         Setting up root key store 
         Root key store setup successful!
       ```
 ---
-    - **13) Security Officer (SO)** ![](../img/HSM/genesis_card.png) ![](../img/HSM/so_card.png)<br />
+    - **13) Security Officer (SO)** ![](../../../img/HSM/genesis_card.png) ![](../../../img/HSM/so_card.png)<br />
       For the next step you will need the SO Cards in case of 2-factor authentication (Primus X, min. 2 cards). <br />
       Create two or more Security Officers (SO) for the device, by defining unique SO operator names and the associated SO PIN, which must have 8 to 12 digits and shall not lead with 0:
       ```
@@ -553,7 +545,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
 
             Temporary setup password is: aaaaa-bbbbbccccc-ddddd-eeeee
           ```
-          - Continue with step 26)
+          - Continue with step 15)
         ---
       - **14b)** No – “Setup as Clone” selected:<br />
         Select if you want to setup the Clone as HA Clone or Manual Clone.<br />
@@ -569,7 +561,7 @@ Power-up the device and wait for completion of the boot procedure, until all 4 L
           Patience, operation in progress... 
           Clone key created
         ```
-        - Continue with step 26)
+        - Continue with step 15)
 ---
     - **15) Decanus** <br />
       In case a Decanus list file **(*.dconfig)** is found on the USB stick and Decanus process is enabled, the listed Decanus ID(s) is paired, the pairing password(s) is written back to the list file, and Decanus pairing files
@@ -600,7 +592,7 @@ Note: before live operation, we recommend to setup additional GN and SO cards fo
 :::
 
 ---
-## 1.4 - Assure integrity of the device (checking digital seal and hardware seal)
+## Assure integrity of the device (checking digital seal and hardware seal)
 
 The digital seal allows to check that the equipment was not manipulated, tampered, or reset since factory provisioning.
 
@@ -619,82 +611,3 @@ The above command should display the digital seal code.
 Raise a ticket on the Securosys Support Portal under ["1 – Administrative”, “Digital Seal Validation request (Primus HSM or Imunes TEE)"](https://support.securosys.com/external/ticket/create/process?ProcessID=Process-dcf9fb84eb5d2da15c7b76f1ac92bda1), referencing the equipment (asset, serial number) and the digital seal code.
 
 Our technical support will confirm the validity of the digital seal code.
-
----
-## 1.5 - Network Setup (if not done using initial wizard)
-
-Continue setting up the network interfaces (if not already done using the initial wizard) or go directly to section 3.7 below and setup policies and network configuration in one go. Please refer to
-the chapter 4.4 for Network Settings details.
-
-Primus HSM User Guide v2.11.1 page 33 of 182
-The network configuration can be either edited in the exported Primus HSM configuration file and
-reimported to the device using the following commands:
-
-:::tip Tip
-
-Edit the exported xml configuration file (default `<deviceName>.nconfig`) and import it
-
-:::
-
-
-<Tabs groupId="device-setup">
-  <TabItem value="ui" label="HSM User Interface (LC Display) Primus X/S-Series" default>
-    -  SETUP → CONFIGURATION → IMPORT/EXPORT → EXPORT SYSTEM CONFIG
-    -  SETUP → CONFIGURATION → IMPORT/EXPORT → IMPORT SYSTEM CONFIG
-  </TabItem>
-  <TabItem value="console" label="HSM Console Primus HSM, all Series" default>   
-    -  `hsm_net_export_config` [filename]
-    -  `hsm_net_import_config`
-
-    Check `help_net_config` for the specific syntax of the commands.
-  </TabItem>
-</Tabs>
-
----
-## 1.6/1.7 - Initial HSM Policy Setup (if not done using initial wizard)
-
-The setup of the device security policies requires security officer privileges. The policy of the device
-can be set for the whole device and optionally for each individual partition (per user configuration,
-see chapter 3.9). In case per user configuration is not setup, the device policy is used for the user.
-The recommended way to setup the policy is to set the configuration by import of an XML formatted
-configuration file. To get a template follow the steps in chapter 3.8. Alternatively, individual parameters can be set via configuration commands:
-
-:::tip Tip
-
-Partitions may use an individual user configuration. Initially these values correspond to the
-factory default parameters. You may have to redo the steps below to make sure you have the configurations of those users included. If individual user configuration is not enabled, it will default to
-the device config.
-
-:::
-
-<Tabs groupId="device-setup">
-  <TabItem value="ui" label="HSM User Interface (LC Display) Primus X/S-Series" default>
-    - Activate SO role:  SETUP → ROLE ACTIVATION
-    - Set individual parameters through:  SETUP → CONFIGURATION → SECURITY → …
-  </TabItem>
-  <TabItem value="console" label="HSM Console Primus HSM, all Series" default>   
-    -  `hsm_so_activation`
-    -  `hsm_sec_set_config` 
-    
-    Check `help_sec_config` for the specific syntax of the commands    
-  </TabItem>
-</Tabs>
-
-:::tip Tip
-
-Make sure that you have at least one API interface enabled (as licensed; JCE, PKCS#11, CNG) on the
-device and, if enabled, also in each individual user config. Ensure that the “Client API Access” parameter is enabled. Otherwise, you cannot connect to the user partition with the application client.
-
-:::
-
-
-<Tabs groupId="device-setup">
-  <TabItem value="ui" label="HSM User Interface (LC Display) Primus X/S-Series" default>
-    -  SETUP → CONFIGURATION → SECURITY → **DEVICE SECURITY** → CRYPTO POLICY → CLIENT API ACCESS
-    -  SETUP → CONFIGURATION → SECURITY → **USER SECURITY** → CLIENT API ACCESS
-  </TabItem>
-  <TabItem value="console" label="HSM Console Primus HSM, all Series" default>   
-    -  `hsm_sec_set_config client_api_access=true`
-    -  `hsm_user_set_config client_api_access=true`    
-  </TabItem>
-</Tabs>

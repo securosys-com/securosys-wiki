@@ -78,7 +78,19 @@ const config = {
             label: 'Tutorial',
           },
           {
-            label: 'Get Started',
+            label: 'PrimusHSM',
+            to: 'docs/HSM/Setup/UserGuide/0_GetStarted/HSM-Setup-v2-11-1',
+            position: 'left',
+            activeBaseRegex: '^(/[^/]+)?/get-started/.*',
+          },
+          {
+            label: 'CloudsHSM',
+            to: 'docs/CloudsHSM/Get-Started/TSB-Quickstart',
+            position: 'left',
+            activeBaseRegex: '^(/[^/]+)?/get-started/.*',
+          },
+          {
+            label: 'TSB',
             to: 'docs/TSB/Get-Started/TSB-Quickstart',
             position: 'left',
             activeBaseRegex: '^(/[^/]+)?/get-started/.*',
